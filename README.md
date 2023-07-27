@@ -48,12 +48,12 @@ This topic is incomplete.
 OBS: All routes was protected with guards that validate if id is an ID of mongo. See more in mongo-id-validation.guard.ts
 
 ### USERS:
-/users -> GET: List all users
-/users/:id -> GET: List a specific user
-/users/:id -> DELETE: Delete a specific user
-/users/:id -> UPDATE: Update infos in a specific user. The request infos is the same as for the POST route, but you want pass only the info you need to update.
+- `GET /users`: List all users
+- `GET /users/:id`: List a specific user
+- `DELETE /users/:id`: Delete a specific user
+- `UPDATE /users/:id`: Update infos in a specific user. The request infos is the same as for the POST route, but you want pass only the info you need to update.
 
-/users -> POST: Create a user, using request infos like this:
+`POST /users`: Create a user, using request infos like this:
 ```javascript
 {
   "username": "outro",
@@ -66,13 +66,13 @@ OBS: All routes was protected with guards that validate if id is an ID of mongo.
 OBS: We accept only 3 roles: 1, 2, 3. See useEnum.ts.
 
 ### POSTS
-/posts -> GET: List all posts
-/posts/:id -> GET: List a specific post
-/posts/:id -> DELETE: Delete a specific post
-/posts/:id -> UPDATE: Update infos in a specific post. The request infos is the same as for the POST route, but you want pass only the info you need to update.
-/posts/author/:id -> GET: Get all posts by author_id
+- `GET /posts`: List all posts
+- `GET /posts/:id`: List a specific post
+- `DELETE /posts/:id`: Delete a specific post
+- `UPDATE /posts/:id`: Update infos in a specific post. The request infos is the same as for the POST route, but you want pass only the info you need to update.
+- `GET /posts/author/:id`: Get all posts by author_id
 
-/posts -> POST: Create a post, using request infos like this:
+- `POST /posts`: Create a post, using request infos like this:
 ```javascript
 {
 	"title": "Title of post",
