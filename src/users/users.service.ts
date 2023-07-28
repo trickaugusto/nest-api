@@ -4,6 +4,8 @@ import { Model } from 'mongoose';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './schemas/user.schema';
+import { AuthCredentialsDto } from '../auth/dto/ user-auth-credentials.dto';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
@@ -65,6 +67,25 @@ export class UsersService {
       .equals(email)
       .where('deletedAt')
       .equals(null);
+
+    return user;
+  }
+
+  async userFindByNameAndMatchingPassword(
+    AuthCredentialsDto: AuthCredentialsDto,
+  ) {
+    let user!: User;
+    const filteredUsers = await this.findUserByUserName(
+      AuthCredentialsDto.username,
+    );
+
+    for await (const userFiltered of filteredUsers) {
+      if (
+        await bcrypt.compare(AuthCredentialsDto.password, userFiltered.password)
+      ) {
+        user = userFiltered;
+      }
+    }
 
     return user;
   }

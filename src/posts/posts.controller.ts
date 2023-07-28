@@ -16,10 +16,18 @@ import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { MongoIdValidationGuard } from 'src/guards/mongo-id-validation.guard';
 import { CheckUserExistValidationPipe } from './pipes/check-exist-user-validation.pipe';
+import { UserRoles } from 'src/auth/enums/user-roles.enum';
+import { AuthGuard } from '@nestjs/passport';
+import { JwtService } from '@nestjs/jwt';
+import { Roles, RolesGuard } from 'src/auth/guards/roles.guard';
 
+@UseGuards(RolesGuard)
 @Controller('posts')
 export class PostsController {
-  constructor(private readonly postsService: PostsService) {}
+  constructor(
+    private readonly postsService: PostsService,
+    private jwtService: JwtService,
+  ) {}
 
   @Post()
   @UsePipes(CheckUserExistValidationPipe)
@@ -28,6 +36,8 @@ export class PostsController {
   }
 
   @Get()
+  @UseGuards(AuthGuard('jwt'))
+  @Roles(UserRoles.leitor)
   findAll() {
     return this.postsService.findAll();
   }
