@@ -27,7 +27,7 @@ Techs:
 I used mongodb database. So, if you want to test this project, you need to create a database in mongo. 
 In src/database/environments you need to create an environments.ts based in environments.example.ts.
 
-Obs: To generate JWT_SECRET, you can use a site to generate, like this https://www.javainuse.com/jwtgenerator
+Obs: To generate JWT_SECRET, you can use a site to generate, like this https://www.javainuse.com/jwtgenerator. If you want, leave it the way it is.
 
 ## Running project
 Clone the project:
