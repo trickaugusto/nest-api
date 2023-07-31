@@ -12,9 +12,16 @@ Welcome to my Nest API. This is a POC.
 In this project, exists POSTS and USERS records.
 
 What i used?
+
+All:
 - Code first
 - Authentication and Authorization with JWT
 - Guards, Pipes, etc
+
+Techs:
+- Nest
+- Mongo/mongoose
+- Docker
 
 ## Configuration
 I used mongodb database. So, if you want to test this project, you need to create a database in mongo. 
