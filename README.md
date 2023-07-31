@@ -27,6 +27,8 @@ Techs:
 I used mongodb database. So, if you want to test this project, you need to create a database in mongo. 
 In src/database/environments you need to create an environments.ts based in environments.example.ts.
 
+Obs: To generate JWT_SECRET, you can use a site to generate, like this https://www.javainuse.com/jwtgenerator
+
 ## Running project
 Clone the project:
 ```bash
@@ -38,9 +40,7 @@ Go to project:
 cd nest-api
 ```
 
-Now, dont forget: create environments.ts with ambient variables. 
-Obs: To generate JWT_SECRET, you can use a site to generate, like this https://www.javainuse.com/jwtgenerator
-
+Now, dont forget: you need to do Configuration step. If you dont created environments.ts, back and do.  
 If you created, lets go to next command:
 
 Running with docker:
