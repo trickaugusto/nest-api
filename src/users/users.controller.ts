@@ -14,7 +14,13 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { MongoIdValidationGuard } from 'src/guards/mongo-id-validation.guard';
 import { DuplicateValidationPipe } from './pipes/duplicate-validation.pipe';
+import { RolesGuard, Roles } from '../auth/guards/roles.guard';
+import { UserRoles } from 'src/auth/enums/user-roles.enum';
+import { AuthGuard } from '@nestjs/passport';
 
+@UseGuards(RolesGuard)
+@Roles(UserRoles.admin)
+@UseGuards(AuthGuard('jwt'))
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}

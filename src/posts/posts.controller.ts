@@ -22,6 +22,7 @@ import { JwtService } from '@nestjs/jwt';
 import { Roles, RolesGuard } from 'src/auth/guards/roles.guard';
 
 @UseGuards(RolesGuard)
+@UseGuards(AuthGuard('jwt'))
 @Controller('posts')
 export class PostsController {
   constructor(
@@ -30,25 +31,27 @@ export class PostsController {
   ) {}
 
   @Post()
+  @Roles(UserRoles.admin, UserRoles.editor)
   @UsePipes(CheckUserExistValidationPipe)
   create(@Body() createPostDto: CreatePostDto) {
     return this.postsService.create(createPostDto);
   }
 
   @Get()
-  @UseGuards(AuthGuard('jwt'))
-  @Roles(UserRoles.leitor)
+  @Roles(UserRoles.admin, UserRoles.leitor, UserRoles.editor)
   findAll() {
     return this.postsService.findAll();
   }
 
   @Get(':id')
+  @Roles(UserRoles.admin, UserRoles.leitor, UserRoles.editor)
   @UseGuards(MongoIdValidationGuard)
   findOne(@Param('id') id: string) {
     return this.postsService.findOne(id);
   }
 
   @Get('author/:id')
+  @Roles(UserRoles.admin, UserRoles.leitor, UserRoles.editor)
   @UseGuards(MongoIdValidationGuard)
   async findAllPostsByAuthor(@Param('id') id: string) {
     const posts = await this.postsService.findAllPostsByAuthor(id);
@@ -61,7 +64,8 @@ export class PostsController {
   }
 
   @Patch(':id')
-  @UseGuards(MongoIdValidationGuard)
+  @UseGuards(MongoIdValidationGuard, AuthGuard('jwt'))
+  @Roles(UserRoles.admin, UserRoles.editor)
   @UsePipes(CheckUserExistValidationPipe)
   @HttpCode(204)
   update(@Param('id') id: string, @Body() updatePostDto: UpdatePostDto) {
@@ -70,7 +74,8 @@ export class PostsController {
 
   @Delete(':id')
   @HttpCode(204)
-  @UseGuards(MongoIdValidationGuard)
+  @UseGuards(MongoIdValidationGuard, AuthGuard('jwt'))
+  @Roles(UserRoles.admin)
   async delete(@Param('id') id: string) {
     return this.postsService.delete(id);
   }
