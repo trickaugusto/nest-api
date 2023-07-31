@@ -58,4 +58,15 @@ export class PostsService {
 
     return posts;
   }
+
+  async findByDate(initialDate: Date, finalDate: Date) {
+    const posts = await this.postModel
+      .find({
+        createdAt: { $gte: initialDate, $lt: finalDate },
+      })
+      .select('title content image tags author_id')
+      .exec();
+
+    return posts;
+  }
 }

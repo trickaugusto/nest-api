@@ -10,6 +10,7 @@ import {
   UsePipes,
   HttpCode,
   NotFoundException,
+  BadRequestException,
 } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { CreatePostDto } from './dto/create-post.dto';
@@ -29,6 +30,7 @@ import {
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { GetPostDto } from './dto/post.dto';
+import { isValidDate } from './helpers/dateValidate';
 
 @ApiUnauthorizedResponse({
   description: 'Unauthorized',
@@ -72,6 +74,24 @@ export class PostsController {
   })
   findOne(@Param('id') id: string) {
     return this.postsService.findOne(id);
+  }
+
+  @Get('date/:initial_date/:final_date')
+  @Roles(UserRoles.admin, UserRoles.leitor, UserRoles.editor)
+  @ApiResponse({ status: 200, type: GetPostDto })
+  @ApiOperation({ summary: 'Find all posts between createdAt range' })
+  @ApiBadRequestResponse({
+    description: 'Invalid format date',
+  })
+  findByDate(
+    @Param('initial_date') initialDate: Date,
+    @Param('final_date') finalDate: Date,
+  ) {
+    if (!isValidDate(initialDate) || !isValidDate(finalDate)) {
+      throw new BadRequestException('Invalid format date');
+    }
+
+    return this.postsService.findByDate(initialDate, finalDate);
   }
 
   @Get('author/:id')
