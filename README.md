@@ -11,11 +11,14 @@
 Welcome to my Nest API. This is a POC.
 In this project, exists POSTS and USERS records.
 
+What i used?
+- Code first
+- Authentication and Authorization with JWT
+- Guards, Pipes, etc
+
 ## Configuration
 I used mongodb database. So, if you want to test this project, you need to create a database in mongo. 
 In src/database/environments you need to create an environments.ts based in environments.example.ts.
-
-I used code first. So, after created environments variables, let's go be happy!
 
 ## Running project
 Clone the project:
@@ -28,14 +31,9 @@ Go to project:
 cd nest-api
 ```
 
-Install all dependences:
+Running with docker:
 ```bash
-yarn install
-```
-
-Run:
-```bash
-yarn start
+yarn run
 ```
 
 ## Tests
