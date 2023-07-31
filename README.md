@@ -15,7 +15,7 @@ What i used?
 
 All:
 - Code first
-- Authentication and Authorization with JWT
+- Authentication and Authorization and JWT passport strategy
 - Guards, Pipes, etc
 
 Techs:
@@ -59,3 +59,6 @@ About the authorization, see all roles in src/auth/enums/user-roles.enum
 # Documentation
 After run project, you can access full swagger documentation:  
 `http://localhost:3000/api`
+
+# Difficulties
+I experienced some difficultes to implement authentication and authorization, but i win this reading documentation and this post: https://betterprogramming.pub/jwt-and-passport-jwt-strategy-for-your-nestjs-rest-api-project-cafa9dd59890
