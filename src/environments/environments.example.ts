@@ -4,7 +4,9 @@ export const environment = {
   PASS_MONGO: 'your_pass_mongodb',
   DATABASE_NAME: 'your_database_name',
 
-  // APP variables
+  /**
+   * App variables
+   */
   APP_PORT: '3000',
   JWT_SECRET: 'abcdABCD1234554321',
   JWT_EXP_M: '60s',

@@ -32,6 +32,8 @@ cd nest-api
 ```
 
 Now, dont forget: create environments.ts with ambient variables. 
+Obs: To generate JWT_SECRET, you can use a site to generate, like this https://www.javainuse.com/jwtgenerator
+
 If you created, lets go to next command:
 
 Running with docker:
