@@ -46,6 +46,6 @@ All routes have JWT Guard, to access this routes, you need authenticate in signi
 
 About the authorization, see all roles in src/auth/enums/user-roles.enum
 
-## Routes
-See swagger documentation, after run project, access:
-`/api`
+# Documentation
+After run project, you can access full swagger documentation:  
+`http://localhost:3000/api`
