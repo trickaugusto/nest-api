@@ -31,6 +31,9 @@ Go to project:
 cd nest-api
 ```
 
+Now, dont forget: create environments.ts with ambient variables. 
+If you created, lets go to next command:
+
 Running with docker:
 ```bash
 yarn start:docker
