@@ -3,7 +3,6 @@ FROM node:16.20
 WORKDIR /usr/src/app
 
 COPY package*.json ./
-COPY yarn.lock ./
 
 RUN yarn install
 
