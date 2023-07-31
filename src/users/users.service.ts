@@ -13,7 +13,11 @@ export class UsersService {
 
   async create(createUserDto: CreateUserDto) {
     const createdUser = await this.userModel.create(createUserDto);
-    return createdUser;
+    if (createdUser) {
+      return true;
+    }
+
+    return false;
   }
 
   async findAll() {

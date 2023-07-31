@@ -13,7 +13,7 @@ export class AuthService {
     private userService: UsersService,
   ) {}
 
-  async signup(createUserDto: CreateUserDto): Promise<User> {
+  async signup(createUserDto: CreateUserDto): Promise<boolean> {
     return await this.userService.create(createUserDto);
   }
 
