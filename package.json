@@ -8,6 +8,7 @@
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
@@ -18,7 +19,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "docker:build": "docker build -t poc-nest-api -f dockerfiles/Dockerfile . ",
-    "start": "yarn docker:build && docker run -p 3000:3000 poc-nest-api"
+    "start:docker": "yarn docker:build && docker run -p 3000:3000 poc-nest-api"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",

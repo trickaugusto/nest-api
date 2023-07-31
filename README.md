@@ -33,7 +33,7 @@ cd nest-api
 
 Running with docker:
 ```bash
-yarn start
+yarn start:docker
 ```
 
 ## Tests
