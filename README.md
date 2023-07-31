@@ -42,10 +42,42 @@ yarn start
 This topic is incomplete.
 
 ## Authorization and Authentication
-This topic is incomplete.
+All routes have JWT Guard, to access this routes, you need authenticate in signin route, get accessToken and send like bearer token in header.
+
+About the authorization, see all roles in src/auth/enums/user-roles.enum
+### Users routes
+Only Admins can be use this route.
+
+### Posts routes
+
 
 ## Routes
 OBS: All routes was protected with guards that validate if id is an ID of mongo. See more in mongo-id-validation.guard.ts
+
+### AUTH:
+`POST /auth/signup`: Route to create users.  
+OBS: Only admin can be create users. 
+   
+Request infos:
+```javascript
+{
+  "username": "username",
+  "nickname": "nickname",
+  "password": "password",
+  "email": "test@gmail.com",
+  "role": 2
+}
+```
+
+`post /auth/signin`: Authentication and get accessToken.  
+   
+Request infos:
+```javascript
+{
+	"username": "username",
+	"password": "password"
+}
+```
 
 ### USERS:
 `GET /users`: List all users   
